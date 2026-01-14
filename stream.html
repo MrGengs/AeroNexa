@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Camera Stream - AeroNexa</title>
+    <link rel="icon" type="image/png" href="image/logo1_1.png">
+    <style>
+        /* Reset all margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full viewport for html and body */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        /* Container for stream */
+        .stream-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Stream image - fills entire viewport */
+        .stream-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fills entire area, may crop edges */
+            display: block;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        /* Loading indicator */
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            z-index: 1;
+        }
+
+        /* Back button (optional) */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 10;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Fullscreen toggle button (optional) */
+        .fullscreen-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 10;
+        }
+
+        .fullscreen-button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Back button to return to dashboard -->
+    <a href="dashboard.html" class="back-button">← Back</a>
+
+    <!-- Stream container -->
+    <div class="stream-container">
+        <!-- Loading indicator -->
+        <div class="loading" id="loadingIndicator">Loading stream...</div>
+        
+        <!-- Camera stream image -->
+        <img 
+            id="streamImage"
+            src="http://192.168.43.123/stream" 
+            alt="Camera Stream"
+            onload="hideLoading()"
+            onerror="showError()"
+        >
+    </div>
+
+    <!-- Fullscreen button (optional) -->
+    <button class="fullscreen-button" onclick="toggleFullscreen()" id="fullscreenBtn">
+        Fullscreen
+    </button>
+
+    <script>
+        // Hide loading indicator when stream loads
+        function hideLoading() {
+            const loading = document.getElementById('loadingIndicator');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }
+
+        // Show error message if stream fails to load
+        function showError() {
+            const loading = document.getElementById('loadingIndicator');
+            if (loading) {
+                loading.textContent = 'Failed to load stream. Please check camera connection.';
+                loading.style.color = '#ff4444';
+            }
+        }
+
+        // Toggle fullscreen mode
+        function toggleFullscreen() {
+            const elem = document.documentElement;
+            const btn = document.getElementById('fullscreenBtn');
+            
+            if (!document.fullscreenElement) {
+                // Enter fullscreen
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+                btn.textContent = 'Exit Fullscreen';
+            } else {
+                // Exit fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                btn.textContent = 'Fullscreen';
+            }
+        }
+
+        // Listen for fullscreen changes
+        document.addEventListener('fullscreenchange', function() {
+            const btn = document.getElementById('fullscreenBtn');
+            if (!document.fullscreenElement) {
+                btn.textContent = 'Fullscreen';
+            }
+        });
+
+        // Prevent right-click context menu on image
+        document.getElementById('streamImage').addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#31bf8a">
+    <title>AeroNexa - Comparison</title>
+    <link rel="icon" type="image/png" href="image/logo1_1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="image/logo1_1.png" alt="AeroNexa Logo" class="logo">
+                <span class="logo-text">eroNexa</span>
+            </div>
+            <div class="header-actions">
+                <a href="alerts.html" class="icon-button">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </a>
+                <a href="profile.html" class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="page active">
+            <div class="container">
+                <a href="dashboard.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+
+                <div class="page-header">
+                    <h2>Room Comparison</h2>
+                    <p class="subtitle">Compare air quality between rooms</p>
+                </div>
+
+                <!-- Room Selector -->
+                <div class="comparison-selector">
+                    <div class="selector-group">
+                        <label>Room 1</label>
+                        <select class="room-select" id="compareRoom1">
+                            <option value="1">Meeting Room A</option>
+                            <option value="2">Meeting Room B</option>
+                            <option value="3">Team Workspace</option>
+                            <option value="4">Server Room</option>
+                        </select>
+                    </div>
+                    <div class="vs-divider">VS</div>
+                    <div class="selector-group">
+                        <label>Room 2</label>
+                        <select class="room-select" id="compareRoom2">
+                            <option value="1">Meeting Room A</option>
+                            <option value="2" selected>Meeting Room B</option>
+                            <option value="3">Team Workspace</option>
+                            <option value="4">Server Room</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Comparison Results -->
+                <div class="comparison-results">
+                    <div class="comparison-metric">
+                        <h4>CO2 Level</h4>
+                        <div class="metric-compare">
+                            <div class="metric-bar">
+                                <div class="bar-label">Meeting A</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill good" style="width: 43%"></div>
+                                    <span class="bar-value">850 ppm</span>
+                                </div>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="bar-label">Meeting B</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill warning" style="width: 60%"></div>
+                                    <span class="bar-value">1200 ppm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-metric">
+                        <h4>Temperature</h4>
+                        <div class="metric-compare">
+                            <div class="metric-bar">
+                                <div class="bar-label">Meeting A</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill good" style="width: 48%"></div>
+                                    <span class="bar-value">24°C</span>
+                                </div>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="bar-label">Meeting B</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill warning" style="width: 56%"></div>
+                                    <span class="bar-value">28°C</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-metric">
+                        <h4>Humidity</h4>
+                        <div class="metric-compare">
+                            <div class="metric-bar">
+                                <div class="bar-label">Meeting A</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill good" style="width: 55%"></div>
+                                    <span class="bar-value">55%</span>
+                                </div>
+                            </div>
+                            <div class="metric-bar">
+                                <div class="bar-label">Meeting B</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill warning" style="width: 68%"></div>
+                                    <span class="bar-value">68%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Winner Card -->
+                <div class="winner-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Meeting Room A</h3>
+                    <p>Has the best air quality with all parameters in normal condition</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Firebase Config must be loaded first -->
+    <script type="module" src="firebase-config.js"></script>
+    <!-- Auth Guard - protects this page -->
+    <script type="module" src="auth-guard.js"></script>
+    <!-- User Avatar Handler -->
+    <script type="module" src="user-avatar.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

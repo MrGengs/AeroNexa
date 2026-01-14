@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#31bf8a">
+    <title>AeroNexa - History</title>
+    <link rel="icon" type="image/png" href="image/logo1_1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="image/logo1_1.png" alt="AeroNexa Logo" class="logo">
+                <span class="logo-text">eroNexa</span>
+            </div>
+            <div class="header-actions">
+                <a href="alerts.html" class="icon-button">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </a>
+                <a href="profile.html" class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="page active">
+            <div class="container">
+                <a href="profile.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+
+                <div class="page-header">
+                    <h2>Data History</h2>
+                    <p class="subtitle">Activity log and air quality changes</p>
+                </div>
+
+                <!-- Date Filter -->
+                <div class="date-filter">
+                    <button class="date-btn active">Today</button>
+                    <button class="date-btn">Yesterday</button>
+                    <button class="date-btn">This Week</button>
+                </div>
+
+                <!-- Timeline -->
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot critical"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">14:30</div>
+                            <h4>Critical Alert - Pantry Room</h4>
+                            <p>CO2 reached 1450 ppm, immediate action needed</p>
+                            <div class="timeline-meta">
+                                <span class="meta-badge critical">Critical</span>
+                                <span class="meta-room">Pantry Room</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot warning"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">13:15</div>
+                            <h4>Warning - Meeting Room B</h4>
+                            <p>Temperature rose to 28°C</p>
+                            <div class="timeline-meta">
+                                <span class="meta-badge warning">Warning</span>
+                                <span class="meta-room">Meeting B</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot success"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">12:00</div>
+                            <h4>System Normal</h4>
+                            <p>All rooms returned to normal after ventilation</p>
+                            <div class="timeline-meta">
+                                <span class="meta-badge success">Normal</span>
+                                <span class="meta-room">All</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot info"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">10:45</div>
+                            <h4>Sensor Maintenance</h4>
+                            <p>BME280 sensor calibration in Server Room</p>
+                            <div class="timeline-meta">
+                                <span class="meta-badge info">Info</span>
+                                <span class="meta-room">Server Room</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot warning"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">09:20</div>
+                            <h4>Dust Increased</h4>
+                            <p>Archive Room recorded 42 μg/m³ dust particles</p>
+                            <div class="timeline-meta">
+                                <span class="meta-badge warning">Warning</span>
+                                <span class="meta-room">Archive Room</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Firebase Config must be loaded first -->
+    <script type="module" src="firebase-config.js"></script>
+    <!-- Auth Guard - protects this page -->
+    <script type="module" src="auth-guard.js"></script>
+    <!-- User Avatar Handler -->
+    <script type="module" src="user-avatar.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

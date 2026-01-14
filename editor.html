@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#31bf8a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>AeroNexa - Floor Plan Editor</title>
+    <link rel="icon" type="image/png" href="image/logo1_1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="container">
+            <div class="logo-section">
+                <img src="image/logo1_1.png" alt="AeroNexa Logo" class="logo">
+                <span class="logo-text">eroNexa</span>
+            </div>
+            <div class="header-actions">
+                <a href="alerts.html" class="icon-button" id="alertButton">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge" id="alertBadge">3</span>
+                </a>
+                <a href="profile.html" class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <section class="page active">
+            <div class="container">
+                <a href="dashboard.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+                <div class="page-header">
+                    <h2>Floor Plan Editor</h2>
+                    <p class="subtitle">Create and edit your floor plans</p>
+                </div>
+
+                <!-- Floor Plan Controls -->
+                <div class="floor-plan-controls">
+                    <div class="floor-selector-wrapper">
+                        <label for="floorSelector">Floor:</label>
+                        <select id="floorSelector" class="floor-selector" onchange="onFloorSelectorChange()">
+                            <option value="0">Floor 1</option>
+                        </select>
+                        <button id="renameFloorBtn" class="btn-rename-floor" onclick="showRenameFloorDialog()" title="Rename Floor">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="drawing-tools">
+                        <button class="tool-btn" data-tool="line" onclick="setDrawingTool('line')" title="Draw with Line (Polygon)">
+                            <i class="fas fa-vector-square"></i> Line
+                        </button>
+                        <button class="tool-btn active" data-tool="rectangle" onclick="setDrawingTool('rectangle')" title="Draw Rectangle">
+                            <i class="fas fa-square"></i> Rectangle
+                        </button>
+                    </div>
+                    <button id="toggleDrawingBtn" class="btn-drawing" onclick="toggleDrawingMode()">
+                        <i class="fas fa-pencil-alt"></i> Start Drawing
+                    </button>
+                    <button class="btn-save" onclick="saveCurrentFloorPlan()">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+
+                <!-- Floor Plan Container -->
+                <div class="floor-plan-wrapper">
+                    <div id="floorPlanContainer" class="floor-plan-container"></div>
+                </div>
+
+                <!-- Editor Info -->
+                <div class="editor-info" style="margin-top: 1rem; padding: 1rem; background: #f5f5f5; border-radius: 8px; font-size: 0.9rem; color: #666;">
+                    <p><strong>Tips:</strong></p>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0;">
+                        <li>Click "Start Drawing" to begin creating rooms</li>
+                        <li><strong>Rectangle mode:</strong> Click and drag to draw rectangular rooms</li>
+                        <li><strong>Line mode:</strong> Click to add points one by one. Lines will connect automatically. Click the first point again (or nearby) to close the polygon and create the room. Press ESC to cancel current line drawing.</li>
+                        <li>Measurements are displayed in real-time while drawing</li>
+                        <li>Click on existing rooms to edit or delete them</li>
+                        <li>Click the edit icon next to the floor selector to rename floors</li>
+                        <li>Don't forget to click "Save" after editing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Firebase Config must be loaded first -->
+    <script type="module" src="firebase-config.js"></script>
+    <!-- Auth Guard - protects this page -->
+    <script type="module" src="auth-guard.js"></script>
+    <!-- User Avatar Handler -->
+    <script type="module" src="user-avatar.js"></script>
+    <script src="app.js"></script>
+    <!-- Devices Management -->
+    <script type="module" src="devices.js"></script>
+    <!-- Floor Plan Editor v2 - Enhanced with grid and room drawing -->
+    <script type="module" src="floor-plan-editor-v2.js"></script>
+    <script type="module">
+        // Initialize floor plan editor when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Wait for auth check
+            if (window.waitForAuthCheck) {
+                await window.waitForAuthCheck();
+            }
+            // Initialize editor
+            if (window.initFloorPlanEditor) {
+                await window.initFloorPlanEditor();
+            }
+        });
+    </script>
+</body>
+</html>

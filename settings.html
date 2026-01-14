@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#31bf8a">
+    <title>AeroNexa - Settings</title>
+    <link rel="icon" type="image/png" href="image/logo1_1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="image/logo1_1.png" alt="AeroNexa Logo" class="logo">
+                <span class="logo-text">eroNexa</span>
+            </div>
+            <div class="header-actions">
+                <a href="alerts.html" class="icon-button">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </a>
+                <a href="profile.html" class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="page active">
+            <div class="container">
+                <a href="profile.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+
+                <div class="page-header">
+                    <h2>Settings</h2>
+                    <p class="subtitle">Application configuration and preferences</p>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="settings-section">
+                    <h3>Notifications</h3>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Push Notifications</h4>
+                            <p>Receive real-time notifications</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Critical Alerts</h4>
+                            <p>Notifications for dangerous conditions</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Daily Warnings</h4>
+                            <p>Daily air quality summary</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Threshold Settings -->
+                <div class="settings-section">
+                    <h3>Sensor Threshold</h3>
+                    <div class="threshold-item">
+                        <label>CO2 - Warning (ppm)</label>
+                        <input type="number" class="threshold-input" value="1000">
+                    </div>
+                    <div class="threshold-item">
+                        <label>CO2 - Critical (ppm)</label>
+                        <input type="number" class="threshold-input" value="1400">
+                    </div>
+                    <div class="threshold-item">
+                        <label>Temperature - Maximum (°C)</label>
+                        <input type="number" class="threshold-input" value="26">
+                    </div>
+                    <div class="threshold-item">
+                        <label>Humidity - Maximum (%)</label>
+                        <input type="number" class="threshold-input" value="60">
+                    </div>
+                </div>
+
+                <!-- Display Settings -->
+                <div class="settings-section">
+                    <h3>Display</h3>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Dark Mode</h4>
+                            <p>Enable dark theme</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Auto Refresh</h4>
+                            <p>Automatically update data every 5 seconds</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Data Management -->
+                <div class="settings-section">
+                    <h3>Data & Storage</h3>
+                    <button class="setting-button">
+                        <i class="fas fa-download"></i>
+                        <span>Export Data CSV</span>
+                    </button>
+                    <button class="setting-button">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Generate PDF Report</span>
+                    </button>
+                    <button class="setting-button danger">
+                        <i class="fas fa-trash"></i>
+                        <span>Clear Cache</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+            <i class="fas fa-chart-line"></i>
+            <span>Analytics</span>
+        </a>
+        <a href="alerts.html" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Alerts</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- Firebase Config must be loaded first -->
+    <script type="module" src="firebase-config.js"></script>
+    <!-- Auth Guard - protects this page -->
+    <script type="module" src="auth-guard.js"></script>
+    <!-- User Avatar Handler -->
+    <script type="module" src="user-avatar.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

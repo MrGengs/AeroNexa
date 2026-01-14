@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#31bf8a">
+    <title>AeroNexa - Founder Tools</title>
+    <link rel="icon" type="image/png" href="image/logo1_1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .founder-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .founder-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+        
+        .founder-card h3 {
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            font-size: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .status-display {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-label {
+            color: var(--text-light);
+        }
+        
+        .status-value {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .status-value.active {
+            color: var(--success);
+        }
+        
+        .status-value.inactive {
+            color: var(--text-light);
+        }
+        
+        .log-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            padding: 16px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        
+        .log-entry {
+            margin-bottom: 4px;
+            padding: 4px 0;
+        }
+        
+        .log-entry.success {
+            color: #4ec9b0;
+        }
+        
+        .log-entry.error {
+            color: #f48771;
+        }
+        
+        .log-entry.info {
+            color: #569cd6;
+        }
+        
+        .device-list-container {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+            background: #f8f9fa;
+        }
+        
+        .device-list-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .device-list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .device-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .device-checkbox input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+        
+        .device-status {
+            margin-left: auto;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .device-status.realtime {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .device-status.static {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: white;
+        }
+        
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background: #e67e22;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
+        }
+        
+        .logout-btn i {
+            font-size: 16px;
+        }
+        
+        @media (max-width: 480px) {
+            .logout-btn span {
+                display: none;
+            }
+            
+            .logout-btn {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="image/logo1_1.png" alt="AeroNexa Logo" class="logo">
+                <span class="logo-text">eroNexa</span>
+            </div>
+            <div class="header-actions">
+                <button onclick="logout()" class="logout-btn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="founder-container">
+            <div class="founder-card">
+                <h3><i class="fas fa-cog"></i> Device Data Generator</h3>
+                <p style="color: var(--text-light); margin-bottom: 20px;">
+                    Generate and send dummy sensor data to Firebase Realtime Database for testing.
+                </p>
+                
+                <div class="form-group">
+                    <label for="deviceCount">Number of Devices</label>
+                    <input type="number" id="deviceCount" min="1" max="100" value="20" placeholder="Enter number of devices">
+                    <small style="color: var(--text-light); display: block; margin-top: 4px;">
+                        Devices will be created from aeronexa-002 to aeronexa-{number+1}
+                    </small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="updateInterval">Update Interval (seconds)</label>
+                    <input type="number" id="updateInterval" min="1" max="60" value="5" placeholder="Update every X seconds">
+                    <small style="color: var(--text-light); display: block; margin-top: 4px;">
+                        How often to send new data (1-60 seconds)
+                    </small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Device Realtime Control</label>
+                    <div class="device-list-container" id="deviceListContainer">
+                        <p style="color: var(--text-light); text-align: center; padding: 20px;">
+                            Device list will appear here after setting device count
+                        </p>
+                    </div>
+                    <small style="color: var(--text-light); display: block; margin-top: 4px;">
+                        Check devices to enable realtime updates. Unchecked devices will remain static.
+                    </small>
+                </div>
+                
+                <div class="button-group">
+                    <button id="startBtn" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Start Sending Data
+                    </button>
+                    <button id="stopBtn" class="btn btn-danger" disabled>
+                        <i class="fas fa-stop"></i> Stop Sending Data
+                    </button>
+                </div>
+                
+                <div class="button-group" style="margin-top: 12px;">
+                    <button id="deleteAllBtn" class="btn btn-warning">
+                        <i class="fas fa-trash"></i> Delete All Devices
+                    </button>
+                </div>
+                
+                <div class="status-display">
+                    <div class="status-item">
+                        <span class="status-label">Status:</span>
+                        <span id="statusValue" class="status-value inactive">Inactive</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Devices Created:</span>
+                        <span id="devicesCount" class="status-value">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Last Update:</span>
+                        <span id="lastUpdate" class="status-value">Never</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Total Updates:</span>
+                        <span id="totalUpdates" class="status-value">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="founder-card">
+                <h3><i class="fas fa-chart-line"></i> Analytics Data Generator</h3>
+                <p style="color: var(--text-light); margin-bottom: 20px;">
+                    Generate realistic historical analytics data for charts. Data simulates real office environment patterns.
+                </p>
+                
+                <div class="form-group">
+                    <label for="analyticsRange">Time Range</label>
+                    <select id="analyticsRange">
+                        <option value="24h">24 Hours (Last Day)</option>
+                        <option value="7d">7 Days (Last Week)</option>
+                        <option value="30d">30 Days (Last Month)</option>
+                    </select>
+                    <small style="color: var(--text-light); display: block; margin-top: 4px;">
+                        Select time range for analytics data generation
+                    </small>
+                </div>
+                
+                <div class="button-group">
+                    <button id="generateAnalyticsBtn" class="btn btn-primary">
+                        <i class="fas fa-database"></i> Generate Analytics Data
+                    </button>
+                </div>
+                
+                <div class="status-display">
+                    <div class="status-item">
+                        <span class="status-label">Analytics Status:</span>
+                        <span id="analyticsStatus" class="status-value inactive">Not Generated</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="founder-card">
+                <h3><i class="fas fa-terminal"></i> Activity Log</h3>
+                <div class="log-container" id="logContainer">
+                    <div class="log-entry info">Ready to start...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase Config must be loaded first -->
+    <script type="module" src="firebase-config.js"></script>
+    <!-- Auth Guard - protects this page -->
+    <script type="module" src="auth-guard.js"></script>
+    <script type="module" src="founder.js"></script>
+</body>
+</html>
+

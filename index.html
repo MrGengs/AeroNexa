@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#31bf8a">
+    <title>AeroNexa - AI-Driven Air Quality Monitoring</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png" href="image/logo1_1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="splash-screen">
+        <div class="splash-loader">
+            <div class="loader-circle loader-circle-1"></div>
+            <div class="loader-circle loader-circle-2"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="company-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="image/logo1_1.png" alt="AeroNexa Logo" class="nav-logo-img">
+                <span class="nav-logo-text">eroNexa</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#product" class="nav-link">Product</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="nav-login-mobile">
+                    <a href="auth.html" class="nav-login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </a>
+                </li>
+            </ul>
+            <a href="auth.html" class="nav-login-btn nav-login-btn-desktop">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Login</span>
+            </a>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="nav-menu-overlay" id="navMenuOverlay"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-sparkles"></i>
+                    <span>AI-Driven Innovation</span>
+                </div>
+                <h1 class="hero-title">Revolutionize Your Indoor Air Quality</h1>
+                <p class="hero-subtitle">Advanced AI-powered monitoring system designed to detect and prevent Building Related Illness (BRI) and protect your health</p>
+                <div class="hero-cta">
+                    <a href="#product" class="btn btn-primary">
+                        <span>Explore Product</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <span>Learn More</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">Air Parameters</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Real-time Monitoring</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">AI</div>
+                        <div class="stat-label">Powered Analysis</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="product-showcase">
+                    <img src="image/product_nbg.png" alt="AeroNexa Air Quality Monitor" class="product-img">
+                    <div class="product-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Clients Section -->
+    <section id="clients" class="clients-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Partners</h2>
+            </div>
+            <div class="clients-grid">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="client-card">
+                    <img src="image/partners/smansa.png" alt="SMA Negeri 1 Surakarta" class="client-logo">
+                </a>
+                <a href="https://rekamersifabadi.github.io/landing/" target="_blank" rel="noopener noreferrer" class="client-card">
+                    <img src="image/partners/reka.png" alt="Reka Mersif Abadi" class="client-logo">
+                </a>
+                <a href="https://www.enumatechnology.com" target="_blank" rel="noopener noreferrer" class="client-card">
+                    <img src="image/partners/enuma.png" alt="Enuma Technology" class="client-logo">
+                </a>
+                <a href="https://www.mersiflab.com" target="_blank" rel="noopener noreferrer" class="client-card">
+                    <img src="image/partners/mersif_lab.png" alt="Mersif Lab" class="client-logo">
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="client-card">
+                    <img src="image/partners/mersifacademy.png" alt="Mersif Academy" class="client-logo">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Our Team</span>
+                <h2 class="section-title">Meet the Developers</h2>
+                <p class="section-description">The talented team behind AeroNexa's innovative air quality monitoring solutions</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card" tabindex="0">
+                    <div class="team-image-wrapper">
+                        <img src="image/anggota/narayana_shafyno_zhafran-ceo.jpg" alt="Narayana Shafyno Zhafran" class="team-image">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Narayana Shafyno Zhafran</h3>
+                        <p class="team-position">CEO</p>
+                    </div>
+                </div>
+                <div class="team-card" tabindex="0">
+                    <div class="team-image-wrapper">
+                        <img src="image/anggota/muhammad_zafran_ahzaidan-cmo.JPEG" alt="Muhammad Zafran Ahzaidan" class="team-image">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Muhammad Zafran Ahzaidan</h3>
+                        <p class="team-position">CMO</p>
+                    </div>
+                </div>
+                <div class="team-card" tabindex="0">
+                    <div class="team-image-wrapper">
+                        <img src="image/anggota/sulaiman_wijaya_agastya-cfo.JPEG" alt="Sulaiman Wijaya Agastya" class="team-image">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Sulaiman Wijaya Agastya</h3>
+                        <p class="team-position">CFO</p>
+                    </div>
+                </div>
+                <div class="team-card" tabindex="0">
+                    <div class="team-image-wrapper">
+                        <img src="image/anggota/aubrey_nareswari_setiyoko-coo.JPG" alt="Aubrey Nareswari Setiyoko" class="team-image">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Aubrey Nareswari Setiyoko</h3>
+                        <p class="team-position">COO</p>
+                    </div>
+                </div>
+                <div class="team-card" tabindex="0">
+                    <div class="team-image-wrapper">
+                        <img src="image/anggota/luqman_fuad_muhasadz-cto.JPEG" alt="Luqman Fuad Muhasadz" class="team-image">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Luqman Fuad Muhasadz</h3>
+                        <p class="team-position">CTO</p>
+                    </div>
+                </div>
+                <div class="team-card" tabindex="0">
+                    <div class="team-image-wrapper">
+                        <img src="image/anggota/davin_danadyaksa-cpo.jpeg" alt="Davin Danadyaksa" class="team-image">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Davin Danadyaksa</h3>
+                        <p class="team-position">CPO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">About Us</span>
+                <h2 class="section-title">Protecting Health Through Innovation</h2>
+                <p class="section-description">AeroNexa is a cutting-edge air quality monitoring solution that combines advanced sensor technology with artificial intelligence to create a comprehensive indoor air quality management system.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Health Protection</h3>
+                    <p>Prevent Building Related Illness (BRI) and reduce health risks associated with poor indoor air quality through proactive monitoring and alerts.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered</h3>
+                    <p>Advanced machine learning algorithms analyze air quality patterns and provide intelligent recommendations for optimal indoor environment.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data-Driven</h3>
+                    <p>Comprehensive analytics and trend analysis help you understand air quality patterns and make informed decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Features</span>
+                <h2 class="section-title">Comprehensive Air Quality Solution</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Monitor 7 critical air parameters in real-time with instant updates and alerts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Recommendations</h3>
+                    <p>Get intelligent, actionable recommendations based on AI analysis of your air quality data.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Analytics & Trends</h3>
+                    <p>Comprehensive analytics with trend analysis and historical data visualization.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code-compare"></i>
+                    </div>
+                    <h3>Multi-Room Comparison</h3>
+                    <p>Compare air quality across multiple rooms to identify problem areas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Smart Alerts</h3>
+                    <p>Receive instant notifications for critical air quality issues that require immediate attention.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App</h3>
+                    <p>Access your air quality data anywhere, anytime with our intuitive mobile application.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" class="product-section">
+        <div class="section-container">
+            <div class="product-wrapper">
+                <div class="product-image-wrapper">
+                    <div class="product-badge-discount">
+                        <span class="discount-text">25% OFF</span>
+                    </div>
+                    <img src="image/product.png" alt="AeroNexa Product" class="product-main-img">
+                </div>
+                <div class="product-info">
+                    <span class="product-badge">Premium Product</span>
+                    <h2 class="product-title">AeroNexa Air Quality Monitor</h2>
+                    <p class="product-description">Professional-grade air quality monitoring device with AI-powered analysis. Monitor 7 critical parameters including PM2.5, CO2, temperature, humidity, and more.</p>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>7 Air Quality Parameters</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>AI-Powered Analysis</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Real-time Monitoring</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Mobile App Included</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>1 Year Warranty</span>
+                        </div>
+                    </div>
+
+                    <div class="product-pricing">
+                        <div class="price-wrapper">
+                            <div class="price-original">
+                                <span class="price-label">Original Price:</span>
+                                <span class="price-value-old" id="priceOriginalIDR">Rp 1.980.000</span>
+                            </div>
+                            <div class="price-current">
+                                <span class="price-label">Special Price:</span>
+                                <div class="price-main">
+                                    <span class="price-currency">Rp</span>
+                                    <span class="price-amount" id="priceIDR">1.485.000</span>
+                                </div>
+                            </div>
+                            <div class="price-savings">
+                                <div class="savings-icon">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                <div class="savings-content">
+                                    <span class="savings-text">You Save</span>
+                                    <span class="savings-amount" id="savingsIDR">Rp 495,000</span>
+                                    <span class="savings-percent">25% OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-cta">
+                        <button class="btn btn-primary btn-large">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Order Now</span>
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <span class="section-badge">Contact Us</span>
+                    <h2 class="section-title">Get in Touch</h2>
+                    <p class="contact-description">Have questions about AeroNexa? We're here to help. Reach out to us through any of the channels below.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@aeronexa.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Address</h4>
+                                <p>123 Innovation Street<br>Tech City, TC 12345</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="company-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="image/logo1.png" alt="AeroNexa" class="footer-logo-img">
+                        <h3>eroNexa</h3>
+                    </div>
+                    <p class="footer-description">AI-Driven Solutions for Indoor Air Quality: Addressing Building Related Illness and Health Risks</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#product">Product</a></li>
+                        <li><a href="#team">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AeroNexa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+

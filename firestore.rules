@@ -1,0 +1,102 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user is the owner of the document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Users collection
+    match /users/{userId} {
+      // Allow read: Users can read their own data
+      allow read: if isOwner(userId);
+      
+      // Allow create: Authenticated users can create their own user document (first time login)
+      // When user first logs in (email or Google), they can create their document
+      // The userId in the document path must match the authenticated user's UID
+      allow create: if isAuthenticated() 
+                    && request.auth.uid == userId
+                    && request.resource.data.keys().hasAll(['uid', 'email'])
+                    && request.resource.data.uid == userId
+                    && request.resource.data.email == request.auth.token.email;
+      
+      // Allow update: Users can only update their own document
+      // They can update lastLoginAt, displayName, photoURL, preferences, etc.
+      // But cannot change uid, email, or createdAt
+      allow update: if isOwner(userId)
+                    && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['uid', 'email', 'createdAt']));
+      
+      // Allow delete: Users can delete their own document (account deletion)
+      allow delete: if isOwner(userId);
+      
+      // Floor Plans subcollection - users/{userId}/floorplans/{floorPlanId}
+      match /floorplans/{floorPlanId} {
+        // Allow read: Users can only read their own floor plans
+        // The userId in the parent path must match the authenticated user's UID
+        // Allow read even if parent document doesn't exist yet
+        allow read: if isAuthenticated() && request.auth.uid == userId;
+        
+        // Allow create: Users can create floor plans in their own subcollection
+        // The userId in the parent path must match the authenticated user's UID
+        // Allow create even if parent document doesn't exist yet (first time user)
+        allow create: if isAuthenticated() 
+                      && request.auth.uid == userId
+                      && request.resource.data.keys().hasAll(['name'])
+                      && !request.resource.data.keys().hasAny(['userId']); // userId should not be in data, it's in path
+        
+        // Allow update: Users can update their own floor plans
+        // Cannot change createdAt
+        // Parent document must exist for update
+        allow update: if isAuthenticated() 
+                      && request.auth.uid == userId
+                      && resource != null
+                      && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['createdAt']));
+        
+        // Allow delete: Users can delete their own floor plans
+        allow delete: if isAuthenticated() 
+                      && request.auth.uid == userId
+                      && resource != null;
+        
+        // Allow list/query: Users can query their own floor plans
+        // Since it's a subcollection, the parent path already ensures ownership
+        allow list: if isAuthenticated() 
+                    && request.auth.uid == userId
+                    && request.query.limit <= 100;
+      }
+    }
+    
+    // Alerts collection - system-wide alerts from sensors
+    match /alerts/{alertId} {
+      // Allow read: Authenticated users can read all alerts
+      allow read: if isAuthenticated();
+      
+      // Allow create: Authenticated users can create alerts
+      // Alerts are generated automatically from sensor data
+      allow create: if isAuthenticated()
+                    && request.resource.data.keys().hasAll(['type', 'title', 'message', 'timestamp']);
+      
+      // Allow update: Users can mark alerts as read
+      allow update: if isAuthenticated()
+                    && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['type', 'title', 'message', 'timestamp', 'roomId', 'sensorType']));
+      
+      // Allow delete: Authenticated users can delete alerts (for cleanup)
+      allow delete: if isAuthenticated();
+      
+      // Allow list/query: Authenticated users can query alerts
+      allow list: if isAuthenticated()
+                  && request.query.limit <= 100;
+    }
+    
+    // Default rule: deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
