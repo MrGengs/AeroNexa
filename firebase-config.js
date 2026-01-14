@@ -40,15 +40,30 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 
 // Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyAUA940to-ZxISjlTIkbqfWSVC0dl-jqzY",
-    authDomain: "aeronexa-id.firebaseapp.com",
-    databaseURL: "https://aeronexa-id-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "aeronexa-id",
-    storageBucket: "aeronexa-id.firebasestorage.app",
-    messagingSenderId: "12468975398",
-    appId: "1:12468975398:web:f69d321fc3345715a8b3e7"
-};
+// Load from config.js if available, otherwise use fallback values
+// IMPORTANT: Create config.js from config.example.js and add your actual API keys
+let firebaseConfig;
+
+if (window.firebaseConfig) {
+    // Use configuration from config.js
+    firebaseConfig = window.firebaseConfig;
+    console.log('[Firebase] Using configuration from config.js');
+} else {
+    // Fallback configuration (for development/testing only)
+    // In production, always use config.js with actual credentials
+    console.warn('[Firebase] WARNING: config.js not found! Using fallback configuration.');
+    console.warn('[Firebase] Please create config.js from config.example.js with your actual API keys.');
+    
+    firebaseConfig = {
+        apiKey: "AIzaSyAUA940to-ZxISjlTIkbqfWSVC0dl-jqzY",
+        authDomain: "aeronexa-id.firebaseapp.com",
+        databaseURL: "https://aeronexa-id-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "aeronexa-id",
+        storageBucket: "aeronexa-id.firebasestorage.app",
+        messagingSenderId: "12468975398",
+        appId: "1:12468975398:web:f69d321fc3345715a8b3e7"
+    };
+}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

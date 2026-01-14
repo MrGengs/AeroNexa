@@ -132,7 +132,9 @@
         </a>
     </nav>
 
-    <!-- Firebase Config must be loaded first -->
+    <!-- Configuration file with API keys (must be loaded first) -->
+    <script src="config.js"></script>
+    <!-- Firebase Config must be loaded after config.js -->
     <script type="module" src="firebase-config.js"></script>
     <!-- Auth Guard - protects this page -->
     <script type="module" src="auth-guard.js"></script>

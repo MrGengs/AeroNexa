@@ -4,8 +4,25 @@
  */
 
 // Gemini API Configuration
-const GEMINI_API_KEY = 'AIzaSyAY-m56jzGmR83jJlMYAT82y41FRtdo78Q';
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta';
+// Load from config.js if available, otherwise use fallback values
+// IMPORTANT: Create config.js from config.example.js and add your actual API keys
+let GEMINI_API_KEY;
+let GEMINI_API_URL;
+
+if (window.GEMINI_API_KEY && window.GEMINI_API_URL) {
+    // Use configuration from config.js
+    GEMINI_API_KEY = window.GEMINI_API_KEY;
+    GEMINI_API_URL = window.GEMINI_API_URL;
+    console.log('[AI Chat] Using Gemini API configuration from config.js');
+} else {
+    // Fallback configuration (for development/testing only)
+    // In production, always use config.js with actual credentials
+    console.warn('[AI Chat] WARNING: config.js not found! Using fallback configuration.');
+    console.warn('[AI Chat] Please create config.js from config.example.js with your actual API keys.');
+    
+    GEMINI_API_KEY = 'AIzaSyAY-m56jzGmR83jJlMYAT82y41FRtdo78Q';
+    GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta';
+}
 
 // State - Using stable model automatically
 const selectedModel = 'models/gemini-2.5-flash'; // Stable version of Gemini 2.5 Flash

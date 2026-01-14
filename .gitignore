@@ -65,5 +65,9 @@ node_modules/
 # dotenv environment variables file
 .env
 
+# Configuration file with sensitive API keys
+# JANGAN commit file ini ke repository!
+config.js
+
 # dataconnect generated files
 .dataconnect
